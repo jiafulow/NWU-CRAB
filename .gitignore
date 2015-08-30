@@ -1,0 +1,20 @@
+__init__.py
+dump.py
+*.pyc
+*.log
+*.root
+*~
+
+# ___________________________________
+# Exclude these files
+
+*_cfg.py
+dump.py
+mixFileNames.py
+mixFileNames.txt
+crab.history
+
+# ___________________________________
+# Exclude these directories
+
+sourceFiles/
