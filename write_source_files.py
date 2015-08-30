@@ -6,6 +6,7 @@ import re
 
 #ui_working_dir = "MC0"
 ui_working_dir = "MC1"
+#ui_working_dir = "FCNH_ntuple"
 user_remote_dir = "/eos/uscms/store/user/jiafulow/HZG/nuTuples_v9.10_8TeV/MC/"
 
 #ui_working_dir = "/uscms_data/d2/bpollack/ntuplesGitNew/CMSSW_5_3_14/src/NWU/ntupleProducer/test/MC/"
@@ -112,7 +113,7 @@ def check():
             percent = bcolors.OKGREEN + percent + bcolors.ENDC
         print "{0:20s}:  {1:6d} / {2:6d}    [{3}]".format(dataset, mydict2.get(dataset, 0), mydict1[dataset], percent)
 
-def write():
+def write(xrd=True):
     srcdir = "sourceFiles/"
     ext = ".txt"
     if not os.path.exists(srcdir):
@@ -120,7 +121,10 @@ def write():
 
     print bcolors.BOLD + "\n>>> Write <<<" + bcolors.ENDC
     for dataset in datasets:
-        print "ls -v {0}/*.root > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
+        if xrd:
+            print "ls -v {0}/*.root | sed -e 's@^/eos/uscms@root://cmsxrootd-site.fnal.gov/@' > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
+        else:
+            print "ls -v {0}/*.root > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
 
 
 # ______________________________________________________________________________
