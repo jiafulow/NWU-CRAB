@@ -5,9 +5,11 @@ import re
 
 
 #ui_working_dir = "MC0"
-ui_working_dir = "MC1"
+#ui_working_dir = "MC1"
+ui_working_dir = "MC2"
 #ui_working_dir = "FCNH_ntuple"
-user_remote_dir = "/eos/uscms/store/user/jiafulow/HZG/nuTuples_v9.10_8TeV/MC/"
+#user_remote_dir = "/eos/uscms/store/user/jiafulow/HZG/nuTuples_v9.10_8TeV/MC/"
+user_remote_dir = "/eos/uscms/store/user/lpchzg/nuTuples_v9.10_8TeV/MC1/"
 
 #ui_working_dir = "/uscms_data/d2/bpollack/ntuplesGitNew/CMSSW_5_3_14/src/NWU/ntupleProducer/test/MC/"
 #user_remote_dir = "/eos/uscms/store/user/lpchzg/nuTuples_v9.10_8TeV/MC/"
@@ -122,9 +124,10 @@ def write(xrd=True):
     print bcolors.BOLD + "\n>>> Write <<<" + bcolors.ENDC
     for dataset in datasets:
         if xrd:
-            print "ls -v {0}/*.root | sed -e 's@^/eos/uscms@root://cmsxrootd-site.fnal.gov/@' > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
+            #print "  ls -v {0}/*.root | sed -e 's@^/eos/uscms@root://cmsxrootd-site.fnal.gov/@' > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
+            print "  ls -v {0}/*.root | sed -e 's@^/eos/uscms@root://cmseos:1094/@' > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
         else:
-            print "ls -v {0}/*.root > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
+            print "  ls -v {0}/*.root > {1}".format(os.path.join(user_remote_dir, dataset), os.path.join(srcdir, dataset+ext))
 
 
 # ______________________________________________________________________________
