@@ -4,3 +4,15 @@ dump.py
 *.log
 *.root
 *~
+
+# ___________________________________
+# Exclude these files
+
+crab.py
+
+# ___________________________________
+# Exclude these directories
+
+crab_projects/
+crab_projects_old/
+crab_projects_backup/
